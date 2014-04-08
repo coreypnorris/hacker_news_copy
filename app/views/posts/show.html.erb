@@ -1,0 +1,10 @@
+<h1><%= @post.name %></h1>
+
+<p>URL: <%= link_to @post.link, @post.link %></p>
+
+<p><%= link_to "Edit", edit_post_path(@post) %></p>
+<p><%= link_to "Delete", post_path(@post),
+                         :confirm => "You sure",
+                         :method => "delete" %></p>
+<p><%= link_to "Homepage", posts_path %></p>
+<p><%= link_to "Edit", edit_post_path(@post) %></p>
