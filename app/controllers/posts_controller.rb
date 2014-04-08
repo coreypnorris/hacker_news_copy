@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = (Post.all.sort_by {|p| p.votes.length }).reverse
   end
 
   def new
@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params[:post])
     if @post.save
-      redirect_to post_path(@post)
+      redirect_to posts_path
     else
       render 'new'
     end

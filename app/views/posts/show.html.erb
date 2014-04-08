@@ -1,11 +1,30 @@
-<h1><%= @post.name %></h1>
+<% content_for(:title, @post.name) %>
 
-<p>URL: <%= link_to @post.link, @post.link %></p>
+<div class="main">
+  <h1><%= @post.name %></h1>
 
-<p><%= link_to "Edit", edit_post_path(@post) %></p>
-<p><%= link_to "Delete", post_path(@post),
-                         data: { confirm: 'You sure?' },
-                         method: "delete" %></p>
-<p><%= link_to "Add Comment", new_post_comment_path(@post.id) %></p>
-<p><%= link_to "Homepage", posts_path %></p>
+  <p>URL: <%= link_to @post.link, @post.link %></p>
+  <p>Upvotes: <%= @post.votes.length %></p>
+  <p><%= link_to "Edit", edit_post_path(@post) %></p>
+  <p><%= link_to "Delete", post_path(@post),
+                           data: { confirm: 'You sure?' },
+                           method: "delete" %></p>
+  <p><%= link_to "Add Comment", new_post_comment_path(@post.id) %></p>
+  <p><%= link_to "Homepage", posts_path %></p>
+
+</div>
+
+<div class="comments">
+
+    <h3>Comments:</h3>
+    <ul>
+      <% @post.comments.each do |comment| %>
+        <li><%= comment.text %> |
+          <%= link_to "Edit", [:edit, @post, comment] %> |
+          <%= link_to "Delete", post_comment_path(@post.id, comment.id),
+                                data: { confirm: 'You sure?' },
+                                method: "delete" %></li>
+      <% end %>
+    </ul>
+</div>
 
