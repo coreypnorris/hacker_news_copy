@@ -1,4 +1,4 @@
-# Hacker News clone
+# Hacker News copy
 Hacker News is a site where nerds post links to articles, vote on which ones they like best, and discuss the articles with comments. Let's make a simplified version of Hacker News.
 
 Once again, don't worry about users logging in yet - we'll get to that very soon!
